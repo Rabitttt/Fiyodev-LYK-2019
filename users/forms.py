@@ -6,7 +6,10 @@ from django import forms
 class UserRegisterForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = UserTable
-        fields = UserCreationForm.Meta.fields + ('username',)
+
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2','telephone','birthday','location','profile_picture','biography','social_media','skills')
+        #fields = UserCreationForm.Meta.fields + ('username',)
+
 
 
 class UserLoginForm(AuthenticationForm):
@@ -16,3 +19,6 @@ class UserLoginForm(AuthenticationForm):
         class Meta:
             model = AuthenticationForm
             AuthenticationFormFields = ('username', 'password')
+
+
+#isim yerıne kullanıcı adı kullanılacak ve ad soyad zorunlu olmayacak

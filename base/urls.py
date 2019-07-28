@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.views.generic.base import TemplateView
-from users.views import RegistrationView,LoginView
+from users.views import RegistrationView,LoginView,ListUser
 
 
 urlpatterns = [
@@ -24,4 +24,5 @@ urlpatterns = [
     path('signup/', RegistrationView.as_view(), name='signup'),
     path('login/', LoginView.as_view(), name='login'),
     path('', TemplateView.as_view(template_name="home.html"), name='home'),
+    path('userlist/',ListUser.as_view(), name='userlist'),
 ]

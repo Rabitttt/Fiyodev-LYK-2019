@@ -5,6 +5,7 @@
 {% block content %}
 {% if request.user.is_authenticated %}
   Hi {{ user.username }}!
+  <a href="http://localhost:8000/login">Login</a>
 
 {% else %}
   <p>You are not logged in</p>
