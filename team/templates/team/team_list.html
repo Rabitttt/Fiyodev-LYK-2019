@@ -1,0 +1,45 @@
+<!--
+
+{% extends 'base.html' %}
+
+{% block title %}Team List{% endblock %}
+
+{% block content %}
+
+
+  {% if request.user.id %}
+    Hi {{ user.username }}!
+  {% for team in object_list%}
+
+    <h4><a href="https://www.youtube.com/watch?v=Xeh9r0CXBmU"> {{team.name}}  </a></h4>
+    <p>Owner = {{ team.owner }} <br>
+       Event Name = {{ team.event_name}}<br>
+       Event Type = {{team.event_type}}<br>
+       Founded = {{team.team_date}}<br>
+       Event Date = {{team.event_date}}
+
+
+
+    </p>
+
+
+  {% endfor %}
+
+   <a href = "{% url 'logout' %}" > Logout </a>
+
+
+
+
+  {% else %}
+    <p> Pls <a href="{% url 'login' %}" > Login </a>  ...</p>
+
+  {% endif %}
+
+
+
+
+
+
+{% endblock %}
+
+-->

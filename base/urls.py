@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include, reverse_lazy
 from django.views.generic.base import TemplateView
-from users.views import RegistrationView,LoginView,ListUser
-
+from users.views import RegistrationView,LoginView,ListUser,Logoutview
+from team.views import ListTeam
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +25,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('', TemplateView.as_view(template_name="home.html"), name='home'),
     path('userlist/',ListUser.as_view(), name='userlist'),
+    path('logout/', Logoutview.as_view(), name="logout"),
+   # path('team/',ListTeam.as_view(),name='teamlist'),
+
 ]

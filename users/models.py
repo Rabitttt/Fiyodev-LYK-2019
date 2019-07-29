@@ -14,3 +14,4 @@ class UserTable(AbstractUser):
     skills = models.TextField(null=False, blank=False, max_length=100)
     #Like_id =  Hocaya Sorulacak.(Diger kullanıcıları id leri nasıl tutulmalı.)
     #gpg_key = models.CharField(max_length=300,null=False, blank=False)
+

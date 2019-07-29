@@ -4,14 +4,37 @@
 
 {% block content %}
 
+
+  {% if request.user.id %}
+    Hi {{ user.username }}!
   {% for user in object_list%}
 
     {% if user.id != request.user.id %}
     <p>{{ user.id }} - <a href="https://www.youtube.com/watch?v=Xeh9r0CXBmU"> {{user.username}}  </a> </p>
 
-    {% endif %}
 
+    {% endif %}
 
   {% endfor %}
 
+   <a href = "{% url 'logout' %}" > Logout </a>
+
+
+
+
+
+
+  {% else %}
+    <p> Pls <a href="{% url 'login' %}" > Login </a>  ...</p>
+
+  {% endif %}
+
+
+
+
+
+
 {% endblock %}
+
+
+

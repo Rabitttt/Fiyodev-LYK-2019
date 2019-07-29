@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from users.models import UserTable
 from django import forms
+from team.models import Team
+
 
 class UserRegisterForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -21,4 +23,17 @@ class UserLoginForm(AuthenticationForm):
             AuthenticationFormFields = ('username', 'password')
 
 
-#isim yerıne kullanıcı adı kullanılacak ve ad soyad zorunlu olmayacak
+"""
+class TeamCreateForm(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = [
+            'name',
+            'event_name',
+            'event_type',
+            'event_information',
+            'event_date',
+            'team_date'
+
+        ]
+"""
