@@ -1,8 +1,9 @@
+from urllib import request
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
-from users.forms import TeamCreateForm
+from team.forms import TeamCreateForm
 from .models import Team
 
 
@@ -12,6 +13,14 @@ class ListTeam(ListView):
     context_object_name = 'teamlist'
 
 
-class TeamCreate():
-    model = Team
+class TeamCreate(CreateView):
     form_class = TeamCreateForm
+    model = Team
+    success_url = reverse_lazy("createteam")
+    template_name = "create_team.html"
+
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["request"] = self.request
+        return kwargs

@@ -21,19 +21,3 @@ class UserLoginForm(AuthenticationForm):
         class Meta:
             model = AuthenticationForm
             AuthenticationFormFields = ('username', 'password')
-
-
-"""
-class TeamCreateForm(forms.ModelForm):
-    class Meta:
-        model = Team
-        fields = [
-            'name',
-            'event_name',
-            'event_type',
-            'event_information',
-            'event_date',
-            'team_date'
-
-        ]
-"""

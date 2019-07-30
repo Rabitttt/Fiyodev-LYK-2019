@@ -11,10 +11,6 @@ from django.contrib.auth import REDIRECT_FIELD_NAME, login as auth_login,logout
 from django.views.generic import FormView, RedirectView
 from .models import UserTable
 
-"""
-class LogoutView(FormView):
-    auth_logout()
-"""
 
 class RegistrationView(FormView):
     form_class = UserRegisterForm

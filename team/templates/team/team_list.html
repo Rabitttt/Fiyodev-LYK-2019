@@ -1,5 +1,3 @@
-<!--
-
 {% extends 'base.html' %}
 
 {% block title %}Team List{% endblock %}
@@ -17,7 +15,7 @@
        Event Type = {{team.event_type}}<br>
        Founded = {{team.team_date}}<br>
        Event Date = {{team.event_date}}
-
+        <a href="" ></a>
 
 
     </p>
@@ -25,7 +23,8 @@
 
   {% endfor %}
 
-   <a href = "{% url 'logout' %}" > Logout </a>
+   <a href = "{% url 'logout' %}" > Logout </a>  <br>
+   <a href="{% url 'createteam' %}" > Create </a> new team.
 
 
 
@@ -35,11 +34,4 @@
 
   {% endif %}
 
-
-
-
-
-
 {% endblock %}
-
--->

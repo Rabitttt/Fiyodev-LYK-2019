@@ -1,5 +1,6 @@
 from django.db import models
 from  django.contrib.auth.models import AbstractUser
+#from team.models import Participants
 
 # Create your models here.
 
@@ -15,3 +16,14 @@ class UserTable(AbstractUser):
     #Like_id =  Hocaya Sorulacak.(Diger kullanıcıları id leri nasıl tutulmalı.)
     #gpg_key = models.CharField(max_length=300,null=False, blank=False)
 
+
+"""
+class TeamManager(models.Manager):
+    #use_for_related_fields = True
+
+    def add_player(self , participant , team ):
+        pass
+
+    def remove_player(self , participant , team):
+        pass
+"""
