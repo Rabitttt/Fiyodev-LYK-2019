@@ -20,12 +20,7 @@ class TeamCreate(CreateView):
     success_url = reverse_lazy("teamlist")
     template_name = "team/create_team.html"
 
+    def form_valid(self, form):
 
-
-
-"""
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs["request"] = self.request
-        return kwargs
-"""
+        form.instance.owner=self.request.user
+        return super(TeamCreate, self).form_valid(form)

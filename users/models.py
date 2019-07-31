@@ -1,6 +1,6 @@
 from django.db import models
 from  django.contrib.auth.models import AbstractUser
-#from team.models import Participants
+from team.models import Team
 
 # Create your models here.
 
@@ -13,8 +13,11 @@ class UserTable(AbstractUser):
     star = models.FloatField(null=True,blank=True)
     social_media = models.URLField(max_length=50)
     skills = models.TextField(null=False, blank=False, max_length=100)
-    #Like_id =  Hocaya Sorulacak.(Diger kullanıcıları id leri nasıl tutulmalı.)
+
     #gpg_key = models.CharField(max_length=300,null=False, blank=False)
 
-
-
+"""
+class Like(models.Model): 
+    like_from_me = models.ForeignKey()
+    liked_me = models.ForeignKey()
+"""

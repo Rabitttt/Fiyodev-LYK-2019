@@ -7,26 +7,48 @@
 
   {% if request.user.id %}
     Hi {{ user.username }}!
-  {% for team in object_list%}
 
-    <h4><a href="https://www.youtube.com/watch?v=Xeh9r0CXBmU"> {{team.name}}  </a></h4>
+
+  <h2>Your Teams</h2>
+
+  {% for team in object_list%}
+    {% if team.owner.id == request.user.id %}
+      <h4><a href="https://www.youtube.com/watch?v=Xeh9r0CXBmU"> {{team.name}}  </a></h4>
     <p>Owner = {{ team.owner }} <br>
        Event Name = {{ team.event_name}}<br>
        Event Type = {{team.event_type}}<br>
        Founded = {{team.team_date}}<br>
        Event Date = {{team.event_date}}
         <a href="" ></a>
-
-
     </p>
+
+    {% endif %}
+  {% endfor %}
+
+<hr>
+
+ <h2>Teams</h2>
+
+ {% for team in object_list %}
+      {% if team.owner.id != request.user.id %}
+      <h4><a href="https://www.youtube.com/watch?v=Xeh9r0CXBmU"> {{team.name}}  </a></h4>
+    <p>Owner = {{ team.owner }} <br>
+       Event Name = {{ team.event_name}}<br>
+       Event Type = {{team.event_type}}<br>
+       Founded = {{team.team_date}}<br>
+       Event Date = {{team.event_date}}
+        <a href="" ></a>
+    </p>
+
+    {% endif %}
 
 
   {% endfor %}
 
+
    <a href = "{% url 'logout' %}" > Logout </a>  <br>
-   <a href="{% url 'createteam' %}" > Create </a> new team.
-
-
+   <a href="{% url 'createteam' %}" > Create New Team.</a>  <br>
+   <a href="{% url 'userlist' %}" > User List </a>
 
 
   {% else %}

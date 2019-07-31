@@ -4,6 +4,8 @@
 
 {% block content %}
 
+  {% if request.user.id %}
+
 <form action="" method="post">
 
 
@@ -13,4 +15,15 @@
 </form>
 
 
+<a href = "{% url 'logout' %}" > Logout </a>  <br>
+<a href = "{% url 'teamlist' %}" > Team List </a>
+
+
+
+  {% else %}
+    <p> Pls <a href="{% url 'login' %}" > Login </a>  ...</p>
+
+  {% endif %}
+
 {% endblock %}
+
