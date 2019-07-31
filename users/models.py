@@ -17,13 +17,4 @@ class UserTable(AbstractUser):
     #gpg_key = models.CharField(max_length=300,null=False, blank=False)
 
 
-"""
-class TeamManager(models.Manager):
-    #use_for_related_fields = True
 
-    def add_player(self , participant , team ):
-        pass
-
-    def remove_player(self , participant , team):
-        pass
-"""

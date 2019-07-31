@@ -13,14 +13,19 @@ class ListTeam(ListView):
     context_object_name = 'teamlist'
 
 
+
 class TeamCreate(CreateView):
     form_class = TeamCreateForm
     model = Team
-    success_url = reverse_lazy("createteam")
-    template_name = "create_team.html"
+    success_url = reverse_lazy("teamlist")
+    template_name = "team/create_team.html"
 
 
+
+
+"""
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs["request"] = self.request
         return kwargs
+"""
