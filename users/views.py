@@ -1,15 +1,14 @@
-from django.contrib import auth
 from django.contrib.auth.views import LogoutView
-from django.http import HttpResponseRedirect, request
+from django.http import HttpResponseRedirect, request, HttpResponse
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from users.forms import UserRegisterForm, UserLoginForm
+from users.forms import UserRegisterForm, UserLoginForm, MatchForm
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView, View
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import REDIRECT_FIELD_NAME, login as auth_login,logout
 from django.views.generic import FormView, RedirectView
-from .models import UserTable
+from users.models import UserTable
 
 
 class RegistrationView(FormView):
@@ -49,6 +48,19 @@ class ListUser(ListView):
     queryset = UserTable.objects.all()
     context_object_name = 'UserList'
 
+class Match(View):
+    form_class = MatchForm
+    url = reverse_lazy("userlist")
+    template_name = "match.html"
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(self.request.POST)
+        if form.is_valid():
+            user = UserTable.objects.get(id=form.cleaned_data["id"])
+            self.request.user.likes.add(user)
+            return HttpResponseRedirect(self.url)
+        else:
+            return HttpResponse(form.errors)
 
 class Home(TemplateView):
     template_name = 'users/home.html'

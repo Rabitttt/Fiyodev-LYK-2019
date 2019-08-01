@@ -6,6 +6,7 @@ from django.db import models
 secenek=[('CTF','CTF'),
          ('Hackathon','Hackathon'),
          ('Meetup','Meetup'),
+         ('Real Project', 'Real Project'),
          ('Other','Other'),
 ]
 
@@ -22,5 +23,3 @@ class Team(models.Model):
 class Participants(models.Model):
     participant = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.DO_NOTHING)
     team = models.ForeignKey(Team,on_delete=models.CASCADE)
-
-

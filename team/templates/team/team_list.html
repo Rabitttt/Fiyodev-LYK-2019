@@ -14,13 +14,13 @@
   {% for team in object_list%}
     {% if team.owner.id == request.user.id %}
       <h4><a href="https://www.youtube.com/watch?v=Xeh9r0CXBmU"> {{team.name}}  </a></h4>
-    <p>Owner = {{ team.owner }} <br>
+     <p>Owner = {{ team.owner }} <br>
        Event Name = {{ team.event_name}}<br>
        Event Type = {{team.event_type}}<br>
        Founded = {{team.team_date}}<br>
        Event Date = {{team.event_date}}
         <a href="" ></a>
-    </p>
+     </p>
 
     {% endif %}
   {% endfor %}

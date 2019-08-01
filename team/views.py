@@ -24,3 +24,4 @@ class TeamCreate(CreateView):
 
         form.instance.owner=self.request.user
         return super(TeamCreate, self).form_valid(form)
+

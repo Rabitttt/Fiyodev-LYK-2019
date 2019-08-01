@@ -18,4 +18,3 @@ class TeamCreateForm(forms.ModelForm):
         ]
         widgets={'event_date':RealDateInput}
 
-

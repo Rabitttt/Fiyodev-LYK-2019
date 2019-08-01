@@ -1,8 +1,8 @@
+from django.conf import settings
 from django.db import models
 from  django.contrib.auth.models import AbstractUser
-from team.models import Team
-
 # Create your models here.
+
 
 class UserTable(AbstractUser):
     telephone = models.CharField(max_length=11, null=True, blank=True, verbose_name='deneme')
@@ -15,9 +15,4 @@ class UserTable(AbstractUser):
     skills = models.TextField(null=False, blank=False, max_length=100)
 
     #gpg_key = models.CharField(max_length=300,null=False, blank=False)
-
-"""
-class Like(models.Model): 
-    like_from_me = models.ForeignKey()
-    liked_me = models.ForeignKey()
-"""
+    likes = models.ManyToManyField("self", related_name="liked_by", symmetrical=False)
