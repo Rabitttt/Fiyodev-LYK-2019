@@ -11,7 +11,7 @@ class UserRegisterForm(UserCreationForm):
 
         fields = (
         'username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'telephone', 'birthday', 'location',
-        'profile_picture', 'biography', 'social_media', 'skills')
+        'profile_picture', 'biography', 'gitlab_link', 'skills')
         # fields = UserCreationForm.Meta.fields + ('username',)
 
 

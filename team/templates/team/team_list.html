@@ -19,7 +19,6 @@
        Event Type = {{team.event_type}}<br>
        Founded = {{team.team_date}}<br>
        Event Date = {{team.event_date}}
-        <a href="" ></a>
      </p>
 
     {% endif %}
@@ -37,8 +36,14 @@
        Event Type = {{team.event_type}}<br>
        Founded = {{team.team_date}}<br>
        Event Date = {{team.event_date}}
-        <a href="" ></a>
+
     </p>
+
+    <form action="{% url 'useradd' %}" method="Post">
+                {% csrf_token %}
+                <button type="submit" name="id" value="{{user.id}}"> Join Team! </button>
+         </form>
+
 
     {% endif %}
 

@@ -11,7 +11,7 @@ class UserTable(AbstractUser):
     profile_picture = models.ImageField(null=True, blank=True)
     biography = models.TextField(null=True, max_length=500, blank=True)
     star = models.FloatField(null=True,blank=True)
-    social_media = models.URLField(max_length=50)
+    gitlab_link = models.URLField(max_length=50)
     skills = models.TextField(null=False, blank=False, max_length=100)
 
     #gpg_key = models.CharField(max_length=300,null=False, blank=False)

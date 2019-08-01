@@ -1,9 +1,8 @@
-from urllib import request
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
-from team.forms import TeamCreateForm
+from django.views.generic import ListView, CreateView,UpdateView
+from team.forms import TeamCreateForm, InvitePlayerForm
+from users.models import UserTable
 from .models import Team
 
 
@@ -24,4 +23,28 @@ class TeamCreate(CreateView):
 
         form.instance.owner=self.request.user
         return super(TeamCreate, self).form_valid(form)
+
+"""
+class TeamUpdateView(LoginRequiredMixin, UpdateView):
+    model = Team
+    form_class = TeamUpdateForm
+    pk_url_kwarg = "team_id"
+
+    def get_success_url(self):
+        return reverse("team_detail", kwargs={"event_id": self.kwargs["event_id"], "team_id": self.object.id})
+"""
+
+class TeamAddUser(UpdateView):
+    form_class = InvitePlayerForm
+    url = reverse_lazy("teamlist")
+    template_name = "user_add_team.html"
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(self.request.POST)
+        if form.is_valid():
+            user = request.objects.get(id=form.cleaned_data["id"])
+            self.request.team.participant.add(user)
+            return HttpResponseRedirect(self.url)
+        else:
+            return HttpResponseRedirect(form.errors)
 

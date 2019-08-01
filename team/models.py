@@ -19,7 +19,10 @@ class Team(models.Model):
     event_name = models.CharField(max_length=30)
     event_information = models.TextField(max_length=500)
     event_date = models.DateTimeField(null=True,blank=True)
+    participant = models.ManyToManyField('self', related_name='participant')
 
+"""
 class Participants(models.Model):
     participant = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.DO_NOTHING)
     team = models.ForeignKey(Team,on_delete=models.CASCADE)
+"""

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include, reverse_lazy
 from django.views.generic.base import TemplateView
 from users.views import RegistrationView,LoginView,ListUser,Logoutview,Match
-from team.views import ListTeam,TeamCreate
+from team.views import ListTeam,TeamCreate,TeamAddUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +29,5 @@ urlpatterns = [
     path('team/',ListTeam.as_view(),name='teamlist'),
     path('createteam/',TeamCreate.as_view(),name='createteam'),
     path('match/',Match.as_view(),name='match'),
+    path('useradd/',TeamAddUser.as_view(),name='useradd'),
 ]

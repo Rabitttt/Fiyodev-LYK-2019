@@ -12,7 +12,15 @@
     {% for user in object_list%}
 
       {% if user.id != request.user.id %}
-      <p>{{ user.id }} - <a href="https://www.youtube.com/watch?v=Xeh9r0CXBmU"> {{user.username}} </a></p>
+      <p>{{ user.id }} - <a href="https://www.youtube.com/watch?v=Xeh9r0CXBmU"> {{user.username}} </a>
+          <img src="{{ user.UserTable.profile_picture.url }}" > <br>
+          {{user.location}}  <br>
+          {{user.biography}}  <br>
+          <a href="{{user.gitlab_link}}" > GitLab </a>   <br>
+          {{user.skills}}  <br>
+          {{user.birthday}}  <br>
+
+      </p>
 
 
           {% if user not in request.user.likes.all %}

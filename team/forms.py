@@ -1,7 +1,6 @@
 from django import forms
 from team.models import Team
 
-
 class RealDateInput(forms.DateInput):
     input_type='date'
 
@@ -18,3 +17,8 @@ class TeamCreateForm(forms.ModelForm):
         ]
         widgets={'event_date':RealDateInput}
 
+
+class InvitePlayerForm(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = ['participant']
